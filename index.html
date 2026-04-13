@@ -1,548 +1,820 @@
 <!DOCTYPE html>
-<html lang="zh-Hant-TW">
-
+<html lang="zh-Hant">
 <head>
-  <!-- Required meta tags -->
-  <title>弘道實業x常香健茶香製品</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/custom.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>弘道實業有限公司｜茶香製品與健康生活品牌</title>
+  <meta name="description" content="弘道實業有限公司，專注茶葉延伸製品、生活香氛與健康睡眠用品，將自然茶香轉化為日常空間中的舒適體驗。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07111a;
+      --bg-2: #0d1a26;
+      --bg-3: #101f2d;
+      --panel: rgba(255, 255, 255, 0.06);
+      --panel-strong: rgba(255, 255, 255, 0.1);
+      --line: rgba(255, 255, 255, 0.12);
+      --text: #f4f7fb;
+      --muted: #9aa8b7;
+      --accent: #8fc7c0;
+      --accent-2: #d2e9e4;
+      --shadow: 0 30px 80px rgba(0, 0, 0, 0.28);
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --container: 1200px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Inter", "Noto Sans TC", sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(143, 199, 192, 0.12), transparent 28%),
+        radial-gradient(circle at left center, rgba(210, 233, 228, 0.06), transparent 24%),
+        linear-gradient(180deg, #07111a 0%, #09131d 30%, #0d1721 100%);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--container));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(18px);
+      background: rgba(7, 17, 26, 0.72);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 44px;
+      height: 44px;
+      object-fit: cover;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.08);
+      padding: 6px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .brand-name {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-sub {
+      color: var(--muted);
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: transform .25s ease, background .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, rgba(143, 199, 192, 0.18), rgba(210, 233, 228, 0.1));
+      color: var(--text);
+      border-color: rgba(143, 199, 192, 0.3);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+      border-color: rgba(255,255,255,0.12);
+    }
+
+    .hero {
+      padding: 44px 0 28px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .hero-copy, .hero-media {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      position: relative;
+      min-height: 680px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      padding: 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background:
+        linear-gradient(180deg, rgba(8, 20, 30, 0.82), rgba(8, 20, 30, 0.94)),
+        url('images/banner/banner-1.JPG') center/cover;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--accent-2);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      margin-bottom: 20px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 36px;
+      height: 1px;
+      background: rgba(210, 233, 228, 0.55);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(3rem, 8vw, 6rem);
+      line-height: .94;
+      letter-spacing: -0.04em;
+      max-width: 9ch;
+      font-weight: 700;
+    }
+
+    .hero-copy p {
+      max-width: 38rem;
+      color: #c8d3de;
+      font-size: 1.02rem;
+      margin: 24px 0 0;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 42px;
+    }
+
+    .stat {
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .stat-label { color: var(--muted); font-size: 0.83rem; margin-bottom: 6px; }
+    .stat-value { font-size: 1.12rem; font-weight: 600; }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(.88) contrast(1.02);
+    }
+
+    .floating-card {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      padding: 22px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(9, 18, 28, 0.55), rgba(9, 18, 28, 0.88));
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(18px);
+    }
+
+    .floating-card strong {
+      display: block;
+      font-size: 1.08rem;
+      margin-bottom: 8px;
+    }
+
+    .section {
+      padding: 28px 0;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: end;
+      margin-bottom: 22px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      letter-spacing: -0.04em;
+      line-height: 1.02;
+    }
+
+    .section-head p {
+      margin: 10px 0 0;
+      max-width: 44rem;
+      color: var(--muted);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .panel {
+      border-radius: var(--radius-lg);
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.035));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .panel-body {
+      padding: 32px;
+    }
+
+    .story p,
+    .panel-body p { color: #c7d1db; }
+
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 28px 0 0;
+      display: grid;
+      gap: 14px;
+    }
+
+    .feature-list li {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .feature-list li:last-child { border-bottom: 0; }
+
+    .feature-list li::before {
+      content: "◦";
+      color: var(--accent);
+      font-size: 1.2rem;
+      line-height: 1;
+      margin-top: 2px;
+    }
+
+    .image-fill img {
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .principle {
+      padding: 26px;
+      min-height: 220px;
+    }
+
+    .principle span {
+      display: block;
+      color: var(--accent-2);
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .principle h3 {
+      margin: 0 0 12px;
+      font-size: 1.35rem;
+      letter-spacing: -0.03em;
+    }
+
+    .principle p { margin: 0; color: #c7d1db; }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .product-card img {
+      aspect-ratio: 4 / 4.6;
+      object-fit: cover;
+    }
+
+    .product-body {
+      padding: 20px;
+    }
+
+    .product-body h3 {
+      margin: 0 0 8px;
+      font-size: 1.08rem;
+    }
+
+    .product-body p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .product-price {
+      margin-top: 14px;
+      color: var(--accent-2);
+      font-weight: 600;
+      font-size: 0.96rem;
+    }
+
+    .team {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .team-card img {
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+    }
+
+    .team-body {
+      padding: 20px;
+    }
+
+    .team-role {
+      color: var(--accent-2);
+      font-size: 0.82rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .team-body h3 { margin: 0 0 8px; font-size: 1.2rem; }
+    .team-body p { margin: 0; color: var(--muted); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 0.9fr 1.2fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .contact-card { padding: 28px; }
+    .contact-card h3 {
+      margin: 0 0 14px;
+      font-size: 0.9rem;
+      color: var(--accent-2);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .contact-card strong { font-size: 1.2rem; }
+    .contact-card p { margin: 0; color: #c7d1db; }
+
+    .map-wrap iframe {
+      display: block;
+      width: 100%;
+      min-height: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .cta {
+      padding: 36px 0 70px;
+    }
+
+    .cta-box {
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 1.2fr auto;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .cta-box h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+    }
+
+    .cta-box p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      max-width: 40rem;
+    }
+
+    .site-footer {
+      padding: 0 0 34px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.94rem;
+    }
+
+    .site-footer a { color: var(--accent-2); }
+
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .grid-2,
+      .contact-grid,
+      .cta-box,
+      .principles,
+      .products,
+      .team {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-copy,
+      .hero-media {
+        min-height: 560px;
+      }
+
+      .contact-grid .map-wrap {
+        grid-column: span 2;
+        min-height: 360px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 14px 0 18px;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+        gap: 14px;
+      }
+
+      .hero-copy,
+      .hero-media {
+        min-height: auto;
+      }
+
+      .hero-copy {
+        padding: 30px;
+      }
+
+      .hero-stats,
+      .grid-2,
+      .principles,
+      .products,
+      .team,
+      .contact-grid,
+      .cta-box {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-grid .map-wrap {
+        grid-column: auto;
+        min-height: 300px;
+      }
+
+      .section-head {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
-
-<body id="home">
-
-  <!-- 進度條 -->
-  <div class="progress">
-    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0"
-      aria-valuemax="100" style="width: 100%"></div>
-  </div>
-
-  <div class="content">
-    <!-- 導覽列 -->
-    <nav id="navspy" class="navbar navbar-expand-lg navbar-light sticky-top">
-      <a class="navbar-brand" href="#">
-        <img src="images/logo.png" alt="">
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto  nav-pills text-center">
-          <li class="nav-item active">
-            <a class="nav-link" href="#home">首頁</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#about">關於弘道</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#introduce">公司介紹</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#menu">產品介紹</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#chef">組織介紹</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact">聯絡我們</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-    <!-- 廣告圖片輪播 -->
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-      </ol>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img class="d-block w-100" src="images/banner/banner-1.JPG" alt="First slide">
-          <div class="carousel-caption d-none d-md-block banner-block">
-            <h1>弘道實業有限公司</h1>
-            <p>敢說自己全球最大,因為沒人敢做這麼多茶葉產品</p>
-          </div>
+<body id="top">
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#top">
+        <img src="images/logo.png" alt="弘道實業標誌">
+        <div>
+          <div class="brand-name">弘道實業有限公司</div>
+          <div class="brand-sub">Tea Living · Natural Materials</div>
         </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="images/banner/banner-2.JPG" alt="Second slide">
-          <div class="carousel-caption d-none d-md-block banner-block">
-            <h1>全球最大茶葉生活用品品牌</h1>
-            <p>純天然鐵觀音,不使用化學產品</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="images/banner/banner-3.JPG" alt="Third slide">
-          <div class="carousel-caption d-none d-md-block banner-block">
-            <h1>墾丁最大五星級飯店-墾丁福華飯店設櫃</h1>
-            <p>請至墾丁福華地下一樓健身房購買</p>
-          </div>
-        </div>
-      </div>
-      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
       </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
+      <nav class="nav-links">
+        <a href="#about">關於弘道</a>
+        <a href="#products">產品介紹</a>
+        <a href="#team">組織介紹</a>
+        <a href="#contact">聯絡我們</a>
+        <a class="btn btn-primary" href="#products">查看產品</a>
+      </nav>
     </div>
+  </header>
 
-
-    <div class="container-fluid">
-      <!-- 廣告大屏幕 -->
-      <div id="about" class="jumbotron jumbotron-fluid">
-        <div class="container">
-          <h2 class="display-3">公司介紹</h2>
-          <p class="lead text-p">
-          <p> 常香健品牌由來:</p>
-          <p>  劉振隆先生1987年創立弘道實業有限公司</p>
-  <p>  </p>
-          <p>創辦人劉振隆在國外的工廠事業也慢走上軌道,甚至做到世界上最大的相關鰻魚器材的塑膠射出工廠,價值超過100億新台幣.結果人生開了一個大玩笑,工廠居然因為有人抽菸導致爆炸燒掉了!創辦人損失無法估計,也導致開始撤退台灣.結果更慘的事情還沒結束;發生在北投明德火災當天出動了英勇的消防隊員122人的救火隊的火災,2019/8/13二姊心琳跟三妹心琪雙雙在這場大火被燒得面目全非,怵目驚心,幾乎等同於焦屍,死狀悽慘.這天這兩位美麗的姊妹花,在太多事情沒有完成之下,姐姐還沒來的及結婚,妹妹還留下一個一歲的小女兒嬰兒.就這樣去當天使了.</p>
-         <p> 常香健的各種茶葉相關商品經過多次的研發還有各種的專利研究.</p>
-        <p> 這就是常香健品牌的由來.</p>
-       
-         
-          </p>
-        </div>
-      </div>
-      <div class="row no-gutters food-bg">
-        <div class="col-sm-6 align-self-end">
-          <img src="images/food-1.jpg" class="img-fluid">
-        </div>
-        <div class="col-sm-6">
-          <div class="row no-gutters">
-            <div class="col-6">
-              <img src="images/food-2.png" class="img-fluid">
-            </div>
-            <div class="col-6">
-              <img src="images/food-3.jpg" class="img-fluid">
-            </div>
-            <div class="col-12">
-              <img src="images/food-4.jpg" class="img-fluid">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="dark">
-        <div class="row align-items-center">
-          <div class="col">
-            <blockquote class="blockquote text-center">中國典籍記載,"茶"有安神,清火,寧心的作用.
-              <footer class="blockquote-footer">台灣眾多醫師推薦茶葉功效</footer>
-            </blockquote>
-          </div>
-        </div>
-      </div>
-
-      <div class="introduce-bg1 d-none d-lg-block">
-        <div class="row">
-          <div class="col-4 ml-auto">
-          <!--  <img src="images/introduce-title1.jpg" alt="" class="img-fluid">-->
-            
-          </div>
-          <div class="col-4">
-            <span class="block-title"> 好好釋放您的嗅覺。</span>
-          </div>
-        </div>
-      </div>
-      <!-- 產品介紹 -->
-      <div id="introduce" class="row mtb-30">
-        <div class="col text-center">
-          <img src="images/introduce-title1.jpg" class="img-fluid">
-        </div>
-      </div>
-      <div class="introduce-bg2">
-        <div class="row align-items-center">
-          <div class="col-12 col-md-6 col-lg-3">
-            <img src="images/introduce-2.jpg" class="img-fluid img-thumbnail">
-          </div>
-          <div class="col-12 col-md-6 col-lg-3 text">除臭防霉</div>
-          <div class="col-12 col-md-6 col-lg-3">
-            <img src="images/introduce-3.jpg" class="img-fluid img-thumbnail">
-          </div>
-          <div class="col-12 col-md-6 col-lg-3 text">衛生抗菌</div>
-        </div>
-        <div class="row align-items-center">
-          <div class="col-12 col-md-6 col-lg-3">
-            <img src="images/introduce-4.jpg" class="img-fluid img-thumbnail">
-          </div>
-          <div class="col-12 col-md-6 col-lg-3 text">調節養生</div>
-          <div class="col-12 col-md-6 col-lg-3">
-            <img src="images/introduce-5.jpg" class="img-fluid img-thumbnail">
-          </div>
-          <div class="col-12 col-md-6 col-lg-3 text">睡眠養生</div>
-        </div>
-      </div>
-
-      <!-- 介紹 -->
-      <div id="menu" class="row mtb-30">
-        <div class="col text-center">
-          <img src="images/introduce-title2.jpg" class="img-fluid">
-        </div>
-      </div>
-
-      <div class="row menu-row-bg">
-        <div class="col">
-          <table class="table  table-striped  table-bordered  table-hover  table-inverse menuTB mx-auto table-responsive">
-            <thead>
-              <tr>
-                <th class="text-center">產品</th>
-                <th>品名</th>
-                <th>價格</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="text-center">
-                  <img src="images/menu/menu-1.jpg" class="img-fluid">
-                </td>
-                <td>純天然鐵觀音烏龍茶葉萬用芳香袋
-                </td>
-                <td>	官方建議售價599元</td>
-                
-              </tr>
-              <tr>
-                <td class="text-center">
-                  <img src="images/menu/menu-2.jpg" class="img-fluid">
-                </td>
-                <td>健康茶枕頭</td>
-                <td>980元</td>
-              </tr>
-              <tr>
-                <td class="text-center">
-                  <img src="images/menu/menu-3.jpg" class="img-fluid">
-                </td>
-                <td>健康茶床墊180*188cm</td>
-                <td>4300元</td>
-              </tr>
-              <tr>
-                <td class="text-center">
-                  <img src="images/menu/menu-4.jpg" class="img-fluid">
-                </td>
-                <td>健康茶床墊150*188cm</td>
-                <td>3600元</td>
-              </tr>
-            </tbody>
-          </table>
-
-        </div>
-      </div>
-      <!-- 弘道實業有限公司 -->
-      <div class="row mtb-30">
-        <div class="col text-center">
-          <img src="images/introduce-title5.jpg" class="img-fluid">
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-4 list-bg d-none d-md-block">
-          <div class="list-group" id="list-tab" role="tablist">
-            <a class="list-group-item list-group-item-action active" data-toggle="list" id="list-home-list" href="#list-home" role="tab"
-              aria-controls="home">吸臭</a>
-            <a class="list-group-item list-group-item-action" data-toggle="list" id="list-profile-list" href="#list-profile" role="tab"
-              aria-controls="profile">防潮</a>
-            <a class="list-group-item list-group-item-action" id="list-messages-list" href="#list-messages" role="tab" aria-controls="messages">安神</a>
-            <a class="list-group-item list-group-item-action" id="list-settings-list" href="#list-settings" role="tab" aria-controls="settings">健康</a>
-          </div>
-        </div>
-        <div class="col-8 list-content-bg  d-none d-md-block">
-          <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
-              忙碌的現代都會人,由於壓力過大,失眠成為大家的通病.健康茶葉枕頭是改善你睡眠的最佳選擇.
-            </div>
-            <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
-    
-              我們嚴選上等鐵觀音烏龍茶,經特殊專業加工,將原片茶葉研製成碎末狀,充填入蜂巢狀表布中,百分之百天然健康,絕無人工添加物,吸臭防潮,並打破傳統茶業枕頭的不舒適感,加上清新茶香味幫助你入民,享受高品質的睡眠.
-           
-            </div>
-            <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
-             
-弘道實業有限公司創建於1987年，歷今快40年之久，1994年與福州南國風茶業開發有限公司合作，至今一直從事環保產品的研發、生產，以人類環保、健康為已任。。
-
-            </div>
-            <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">近來健康養生保健為消費者所重視，茶是環保、健康，茶能令人心曠神怡，能使空氣變得格外清新。</div>
-          </div>
-        </div>
-        <div class="list-group  d-sm-block d-md-none">
-          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">嚴選茶葉</h5>
-            </div>
-            <p class="mb-1">。</p>
-          </a>
-          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">鐵觀音的製作</h5>
-            </div>
-            <p class="mb-1">
-              
-              安溪鐵觀音一年分四季採制，穀雨至立夏（4月中下旬~5月上旬）為春茶，產量佔全年總產量的15~25%；夏至至小暑（6月中下旬~7月上旬）為夏茶，產量占25~30%；立秋至處暑（8月上旬~8月下旬）為暑茶，產量占15~20%；秋分至寒露（9月下旬~10月上旬）為秋茶，產量占40~45%。制茶品質以秋茶為最好，春茶次之。秋茶，其香氣特高，俗稱秋香，湯味醇厚。夏、暑茶品質較次。鮮葉採摘標準必須在嫩梢形成駐芽後，頂葉剛開展呈小開面或中開面時，採下二、三葉。采時要做到「五不」，即不折斷葉片，不折疊葉張，不碰碎葉尖，不帶單片，不帶魚葉和老梗。生長地帶不同的茶樹鮮葉要分開，特別是早青、午青、晚青要嚴格分開製造，以午青品質為最優。
-
-            
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div>
+            <div class="eyebrow">Natural Innovation Since 1987</div>
+            <h1>把茶香，做成生活的一部分</h1>
+            <p>
+              弘道實業長期投入茶葉延伸製品與健康生活用品開發，將天然茶葉的氣味、材質與日常需求重新整合，打造更清爽、更安定、也更符合現代空間的使用體驗。
             </p>
-          </a>
-          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">鐵觀音製造工藝</h5>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#contact">聯絡我們</a>
+              <a class="btn btn-secondary" href="#about">了解品牌</a>
             </div>
-            <p class="mb-1">
-              
-安溪鐵觀音的製造工藝，要經過：涼青、曬青、涼青、做青、（搖青攤置）、炒青、揉捻、初焙、復焙、復包揉、文火慢烤、揀簸等工序才製成成品。
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat">
+              <div class="stat-label">Founded</div>
+              <div class="stat-value">1987</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Core Focus</div>
+              <div class="stat-value">茶葉生活用品</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Brand Direction</div>
+              <div class="stat-value">自然 · 健康 · 空間感</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-media panel">
+          <img src="images/banner/banner-2.JPG" alt="弘道實業品牌主視覺">
+          <div class="floating-card">
+            <strong>未來感，不是 AI 感。</strong>
+            我們用的是更安靜的科技企業語言：精準、乾淨、克制，讓品牌看起來前進，但不浮誇。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">About Brand</div>
+            <h2>從製造經驗出發，走向健康生活品牌</h2>
+            <p>
+              弘道實業創立於 1987 年，長期投入產品研發與製造，後續延伸到茶葉相關健康用品與生活材料應用。品牌核心不是追逐流行，而是把天然材質重新整理成更適合現代人生活的產品系統。
             </p>
-          </a>
-          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">鐵觀音起源</h5>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <article class="panel story">
+            <div class="panel-body">
+              <div class="eyebrow">Brand Story</div>
+              <p>
+                常香健系列源自對天然茶葉特性的長期研究，希望把茶香、透氣、除味與日常舒適感結合，讓產品不只停留在「商品」，而是成為居家、睡眠與生活空間中的穩定陪伴。
+              </p>
+              <p>
+                這個品牌的形成，也帶著家族經歷與人生轉折後的重新出發。與其渲染故事，我們更想把這些經歷沉澱成更踏實的產品與更長久的品牌價值。
+              </p>
+              <ul class="feature-list">
+                <li>以天然茶葉延伸材料為核心</li>
+                <li>重視健康、氣味、空間與日常舒適度</li>
+                <li>從功能導向轉向更完整的品牌體驗</li>
+              </ul>
             </div>
-            <p class="mb-1">
-              鐵觀音起源於福建安溪，最早是指一種茶樹品種，具有明顯的紅心、歪尾以及葉片向上捲曲如波浪狀手形等特徵，俗稱「紅心歪尾桃」。製成茶葉，在沖泡後，
-              有「茶色澤烏潤、沉重似鐵」的外觀及口感，因此稱為鐵觀音。
+          </article>
 
-現今製成鐵觀音的原料，不限於紅心歪尾桃，來源包括了色種（奇蘭、毛蟹、梅占、八仙等）、本山、黃旦、硬枝紅心、金萱、四季春等品種。
+          <div class="panel image-fill">
+            <img src="images/banner/banner-3.JPG" alt="品牌展示圖片">
+          </div>
+        </div>
+      </div>
+    </section>
 
-傳統鐵觀音製作法，發酵程度常達40-50%。屬於半發酵茶類，現今中國流行的發酵程度較低，口味近於綠茶，稱綠觀音。
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Core Principles</div>
+            <h2>品牌呈現的三個方向</h2>
+            <p>
+              這次版型不是走傳統保健品網站，也不是走 AI 科技模板，而是比較像材料品牌、生活科技品牌、質感企業官網的方向。
             </p>
-          </a>
+          </div>
         </div>
-      </div>
 
-      <!-- 組織介紹 -->
-      <div id="chef" class="row mtb-30">
-        <div class="col text-center">
-          <img src="images/introduce-title3.jpg" class="img-fluid" alt="">
+        <div class="principles">
+          <article class="panel principle">
+            <span>01</span>
+            <h3>自然材料</h3>
+            <p>以茶葉本身的氣味、觸感與生活應用為主體，建立品牌的真實感。</p>
+          </article>
+          <article class="panel principle">
+            <span>02</span>
+            <h3>未來企業感</h3>
+            <p>用冷靜、俐落的版面與留白，讓網站看起來更像 2026 年的品牌官網。</p>
+          </article>
+          <article class="panel principle">
+            <span>03</span>
+            <h3>避免 AI 模板味</h3>
+            <p>不做霓虹電路、機器頭像、藍紫光效，而是走成熟、可信、可長期使用的視覺。</p>
+          </article>
         </div>
       </div>
-      <div class="row w-80 mx-auto">
-        <div class="col-sm-12 col-md-4 mtb-35">
-          <figure class="figure">
-            <img src="images/chef/chef-1.jpg" class="img-fluid" alt="">
-          </figure>
-          <figcaption class="figure-caption text-right">總經理 - 劉振隆 公司的董事長,德高望重,氣定神閒.地表最有智慧的人類. </figcaption>
+    </section>
 
+    <section class="section" id="products">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Product Line</div>
+            <h2>產品介紹</h2>
+            <p>
+              以茶葉延伸製品為主，結合除味、防潮、舒眠與居家使用情境，讓產品在實用之外也更符合現代生活空間。
+            </p>
+          </div>
         </div>
-        <div class="col-sm-12 col-md-4 mtb-35">
-          <figure class="figure">
-            <img src="images/chef/chef-2.jpg" class="img-fluid" alt="">
-          </figure>
-          <figcaption class="figure-caption text-right">總監 - 劉冰 號稱冰山美女,包裝行銷,雜事一把抓,沒有做不到的事情.</figcaption>
-        </div>
-        <div class="col-sm-12 col-md-4 mtb-35">
-          <figure class="figure">
-            <img src="images/chef/chef-3.jpg" class="img-fluid" alt="">
-          </figure>
-          <figcaption class="figure-caption text-right">總監 - 劉謙 程式設計師,包山包海,只要你敢開口喊價錢,甚麼程式都生的出來</figcaption>
-        </div>
-      </div>
 
-       聯絡我們
-      <div id="contact" class="row mtb-30">
-        <div class="col text-center">
-          <img src="images/introduce-title4.jpg" class="img-fluid" alt="">
-        </div>
-      </div>
-     <!-- <form id="needs-validation" class="contact-form" novalidate>
-        <div class="container">
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="inputEmail4" class="col-form-label sr-only">請輸入您的姓名</label>
-              <input type="text" class="form-control form-control-lg" id="inputEmail4" placeholder="請輸入您的姓名" required>
-              <div class="invalid-feedback">
-                請輸入您的姓名
-              </div>
+        <div class="products">
+          <article class="panel product-card">
+            <img src="images/menu/menu-1.jpg" alt="純天然鐵觀音烏龍茶葉萬用芳香袋">
+            <div class="product-body">
+              <h3>萬用芳香袋</h3>
+              <p>純天然鐵觀音烏龍茶葉延伸製品，適合居家、衣櫃、車內與小型空間。</p>
+              <div class="product-price">建議售價 599 元</div>
             </div>
-            <div class="form-group col-md-6">
-              <label for="inputPassword4" class="col-form-label sr-only">請輸入您的手機</label>
-              <input type="text" class="form-control form-control-lg" id="inputPassword4" placeholder="請輸入您的手機">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="inputAddress" class="col-form-label sr-only">請輸入您的Email</label>
-            <input type="email" class="form-control form-control-lg" id="inputAddress" placeholder="請輸入您的Email" required>
-          </div>
+          </article>
 
-          <div class="form-group">
-            <label for="exampleFormControlSelect2" class="sr-only">詢問主題</label>
-            <select class="form-control form-control-lg select-h90" id="exampleFormControlSelect2">
-              <option>請選擇</option>
-              <option>產品</option>
-              <option>樣式</option>
-              <option>環境</option>
-              <option>價格</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="exampleFormControlTextarea1" class="sr-only">請輸入詢問內容</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="請輸入詢問內容" required></textarea>
-          </div>
-          <div class="row justify-content-center">
-            <button type="submit" class="btn btn-primary">送出</button>
+          <article class="panel product-card">
+            <img src="images/menu/menu-2.jpg" alt="健康茶枕頭">
+            <div class="product-body">
+              <h3>健康茶枕頭</h3>
+              <p>以天然茶葉素材延伸，打造更清爽、舒適的睡眠體驗。</p>
+              <div class="product-price">售價 980 元</div>
+            </div>
+          </article>
+
+          <article class="panel product-card">
+            <img src="images/menu/menu-3.jpg" alt="健康茶床墊 180x188cm">
+            <div class="product-body">
+              <h3>健康茶床墊 180×188cm</h3>
+              <p>適合大尺寸睡眠空間，兼顧支撐與日常氣味舒適感。</p>
+              <div class="product-price">售價 4300 元</div>
+            </div>
+          </article>
+
+          <article class="panel product-card">
+            <img src="images/menu/menu-4.jpg" alt="健康茶床墊 150x188cm">
+            <div class="product-body">
+              <h3>健康茶床墊 150×188cm</h3>
+              <p>面向日常居家使用需求，適合作為健康生活用品選擇。</p>
+              <div class="product-price">售價 3600 元</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="team">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Organization</div>
+            <h2>組織介紹</h2>
+            <p>品牌背後是一個橫跨製造、包裝行銷與技術整合的團隊。</p>
           </div>
         </div>
 
-      </form> -->
-      
-      
+        <div class="team">
+          <article class="panel team-card">
+            <img src="images/chef/chef-1.jpg" alt="總經理 劉振隆">
+            <div class="team-body">
+              <div class="team-role">General Manager</div>
+              <h3>劉振隆</h3>
+              <p>帶領公司長期發展與產品方向規劃，累積深厚產業經驗。</p>
+            </div>
+          </article>
 
+          <article class="panel team-card">
+            <img src="images/chef/chef-2.jpg" alt="總監 劉冰">
+            <div class="team-body">
+              <div class="team-role">Brand & Operations</div>
+              <h3>劉冰</h3>
+              <p>負責品牌、包裝行銷與整體營運整合，推進產品對外呈現。</p>
+            </div>
+          </article>
+
+          <article class="panel team-card">
+            <img src="images/chef/chef-3.jpg" alt="總監 劉謙">
+            <div class="team-body">
+              <div class="team-role">Technology & Systems</div>
+              <h3>劉謙</h3>
+              <p>整合網站、系統與技術執行，協助品牌數位化與產品呈現升級。</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Contact</div>
+            <h2>聯絡我們</h2>
+            <p>若想了解產品、合作方式或進一步洽詢，歡迎直接與弘道實業聯繫。</p>
+          </div>
+        </div>
+
+        <div class="contact-grid">
+          <article class="panel contact-card">
+            <h3>營業時間</h3>
+            <p><strong>星期一到星期六</strong><br>09:00–21:00</p>
+          </article>
+
+          <article class="panel contact-card">
+            <h3>聯絡方式</h3>
+            <p><strong>02-2596-1396</strong><br><br>歡迎來電詢問產品與合作資訊。</p>
+          </article>
+
+          <div class="panel map-wrap">
+            <iframe title="弘道實業地圖" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14456.15850799903!2d121.5319108!3d25.066646!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd6b61084b804d158!2z5byY6YGT5a-m5qWt5pyJ6ZmQ5YWs5Y-4!5e0!3m2!1szh-TW!2stw!4v1610757588640!5m2!1szh-TW!2stw" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+
+        <div class="panel contact-card" style="margin-top:18px;">
+          <h3>地址</h3>
+          <p><strong>台北市中山區德惠街173號5樓</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container panel cta-box">
+        <div>
+          <div class="eyebrow">Further Access</div>
+          <h2>延伸入口</h2>
+          <p>也可以前往常香健官網，或下載品牌 App 了解更多資訊。</p>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end;">
+          <a class="btn btn-primary" href="https://scott93723.github.io/Meeting-Health.com/">常香健官網</a>
+          <a class="btn btn-secondary" href="https://github.com/scott93723/Downlod-APP/raw/main/%E5%B8%B8%E9%A6%99%E5%81%A5_v1.0.apk">App 下載</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
     <div class="container">
-        <div class="media-container-row content mbr-white">
-            <div class="col-12 col-md-3 mbr-fonts-style display-7">
-                <p class="mbr-text"><strong>營業時間：
-</strong><br><br>星期一到星期六
-<br>09:00~21:00</p>
-            </div>
-            <div class="col-12 col-md-3 mbr-fonts-style display-7">
-                <p class="mbr-text"><strong>地址&nbsp;：&nbsp;</strong><br>
-<br>台北市中山區德惠街173號5樓
-<br>
-<br>
-<br><strong>聯絡方式&nbsp;：&nbsp;<br></strong>
-<br>電話 :02-2596-1396 <br><br></p>
-            </div>
-            <div class="col-12 col-md-6">
-              <div class="google-map"><iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14456.15850799903!2d121.5319108!3d25.066646!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd6b61084b804d158!2z5byY6YGT5a-m5qWt5pyJ6ZmQ5YWs5Y-4!5e0!3m2!1szh-TW!2stw!4v1610757588640!5m2!1szh-TW!2stw" allowfullscreen=""></iframe></div>
-            </div>
-       
-        </div>
-
+      Copyright © 弘道實業有限公司 1987–2026 All rights reserved.
     </div>
-</section>
-
-<section once="footers" class="cid-rznN35r9It" id="footer6-c">
-
-
-      <footer class="page-footer">
-        <div class="row">
-          <div class="col text-center">
-            
-               <p>  <a href=" https://scott93723.github.io/Meeting-Health.com//">常香健純天然茶葉芳香袋官網 </a></p></li>
-           
-           <p>    <a href="https://github.com/scott93723/Downlod-APP/raw/main/%E5%B8%B8%E9%A6%99%E5%81%A5_v1.0.apk">常香健App下載 </a></p>
-            
-            Copyright © 弘道實業有限公司1987-2023  All rights reserved.
-       
-          
-          </li>
-          </div>
-        </div>
-      </footer>
-
-    </div>
-  </div>
-  <div id="toTop"></div>
-
-
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-    crossorigin="anonymous"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script type="text/javascript">
-    $('.custom-control-input').prop('indeterminate', true)
-  </script>
-  <script>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (function () {
-      "use strict";
-      window.addEventListener("load", function () {
-        var form = document.getElementById("needs-validation");
-        form.addEventListener("submit", function (event) {
-          if (form.checkValidity() == false) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-          form.classList.add("was-validated");
-        }, false);
-      }, false);
-
-      //頁面載入進度條的效果
-      $(".progress").fadeOut(2000, function () {
-        $(".content").fadeIn(1000);
-      })
-
-      //列表群組控制
-      $('#list-tab a').click(function (e) {
-        e.preventDefault()
-        $(this).tab('show')
-      })
-      //指定哪個列表內容出現
-      $('#list-tab a:last').tab('show')
-
-
-      //選單滑動監聽
-      $('body').scrollspy({
-        target: '#navspy',
-        offset: 100
-      })
-
-
-      //導覽列背景效果
-      $(document).scroll(function () { //開始捲動
-
-        if ($(this).scrollTop()) { //如果捲軸拉到了最上方，按鈕淡出
-          $('#toTop').fadeIn();
-        } else { //如果捲軸拉開了最上方，按鈕淡入
-          $('#toTop').fadeOut();
-        }
-
-
-        if ($(this).scrollTop() > ($("#about").offset().top) - 73) { //如果視窗的捲動到了#about區塊的上方
-
-          $("#navspy").css('transition', 'background 0.5s linear'); //背景顏色淡入
-          $("#navspy").css('background-color', 'rgba(70, 70, 70, 0.6)');
-        } else { //如果視窗的捲動沒有到了#about區塊的上方
-          $("#navspy").css('background-color', '#0B2626');
-
-        }
-      });
-
-      //點選按鈕頁面自動捲到最上方
-      $("#toTop").click(function () {
-        $("html, body").animate({
-          scrollTop: 0
-        }, 600);
-      });
-
-      //選單點選滑動效果開頭
-      $("#navspy li a[href^='#']").on('click', function (e) {
-
-        // hash是設定連結#字後面的文字內容
-        var target;
-        target = this.hash;
-
-        // 連結效果取消
-        e.preventDefault();
-
-        // 將導覽列的高度儲存在navOffset變數裡
-        var navOffset;
-        navOffset = $('#navspy').height();
-
-        // 捲軸滑動開始
-        $('html, body').animate({
-          scrollTop: $(this.hash).offset().top - navOffset
-        }, 600, function () {
-
-          // 增加#字後面的文字內容到URL的最後面
-          return window.history.pushState(null, null, target);
-
-        });
-
-      });
-      //選單點選滑動效果結尾
-
-
-
-
-    }());
-  </script>
+  </footer>
 </body>
-
 </html>
