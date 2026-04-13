@@ -83,6 +83,64 @@
       border: 1px solid rgba(255,255,255,0.08);
     }
 
+    .logo-svg {
+      width: 48px;
+      height: 48px;
+      flex: none;
+    }
+
+    .logo-hex {
+      fill: none;
+      stroke: url(#logo-grad);
+      stroke-width: 2;
+      filter: drop-shadow(0 0 6px rgba(143,199,192,0.5));
+      animation: logo-rotate 8s linear infinite;
+      transform-origin: 24px 24px;
+    }
+
+    .logo-hex-inner {
+      fill: none;
+      stroke: url(#logo-grad2);
+      stroke-width: 1.2;
+      opacity: 0.6;
+      animation: logo-rotate 12s linear infinite reverse;
+      transform-origin: 24px 24px;
+    }
+
+    .logo-text-svg {
+      fill: var(--accent-2);
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-anchor: middle;
+      dominant-baseline: central;
+      filter: drop-shadow(0 0 4px rgba(210,233,228,0.6));
+    }
+
+    .logo-pulse {
+      fill: rgba(143,199,192,0.15);
+      animation: logo-pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes logo-rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes logo-pulse {
+      0%, 100% { opacity: 0.2; r: 8; }
+      50% { opacity: 0.6; r: 12; }
+    }
+
+    .logo-glow {
+      animation: logo-glow-anim 2.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes logo-glow-anim {
+      from { filter: drop-shadow(0 0 4px rgba(143,199,192,0.4)); }
+      to { filter: drop-shadow(0 0 14px rgba(143,199,192,0.9)) drop-shadow(0 0 28px rgba(210,233,228,0.4)); }
+    }
+
     .brand-name {
       font-size: 1rem;
       font-weight: 600;
@@ -543,7 +601,23 @@
   <header class="site-header">
     <div class="container nav">
       <a class="brand" href="#top">
-        <img src="images/logo.png" alt="弘道實業標誌">
+        <svg class="logo-svg logo-glow" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#8fc7c0"/>
+              <stop offset="100%" stop-color="#d2e9e4"/>
+            </linearGradient>
+            <linearGradient id="logo-grad2" x1="100%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#d2e9e4"/>
+              <stop offset="50%" stop-color="#8fc7c0"/>
+              <stop offset="100%" stop-color="#5fa8a0"/>
+            </linearGradient>
+          </defs>
+          <circle class="logo-pulse" cx="24" cy="24" r="10"/>
+          <polygon class="logo-hex" points="24,3 43.8,13.5 43.8,34.5 24,45 4.2,34.5 4.2,13.5"/>
+          <polygon class="logo-hex-inner" points="24,9 37.5,16.8 37.5,31.2 24,39 10.5,31.2 10.5,16.8"/>
+          <text class="logo-text-svg" x="24" y="24.5">弘</text>
+        </svg>
         <div>
           <div class="brand-name">弘道實業有限公司</div>
           <div class="brand-sub">Software Development · Digital Solutions</div>
