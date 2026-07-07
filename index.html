@@ -457,6 +457,18 @@
       object-fit: cover;
     }
 
+    .team-avatar {
+      aspect-ratio: 4 / 5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 72px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: rgba(255, 255, 255, 0.92);
+      background: linear-gradient(135deg, #2b3a55, #4a6285);
+    }
+
     .team-body {
       padding: 20px;
     }
@@ -786,7 +798,7 @@
 
         <div class="team">
           <article class="panel team-card">
-            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&h=750&fit=crop&crop=face" alt="總經理">
+            <div class="team-avatar" role="img" aria-label="總經理 劉振隆">劉</div>
             <div class="team-body">
               <div class="team-role">General Manager</div>
               <h3>劉振隆</h3>
@@ -795,7 +807,7 @@
           </article>
 
           <article class="panel team-card">
-            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=750&fit=crop&crop=face" alt="總監 劉冰">
+            <div class="team-avatar" role="img" aria-label="總監 劉冰">冰</div>
             <div class="team-body">
               <div class="team-role">Brand & Operations</div>
               <h3>劉冰</h3>
@@ -804,7 +816,7 @@
           </article>
 
           <article class="panel team-card">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=750&fit=crop&crop=face" alt="總監 寶哥">
+            <div class="team-avatar" role="img" aria-label="總監 寶哥">寶</div>
             <div class="team-body">
               <div class="team-role">Technology & Development</div>
               <h3>寶哥</h3>
